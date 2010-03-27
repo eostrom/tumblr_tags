@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'logger'
+require 'haml'
 
 configure do
   LOGGER = Logger.new("log/sinatra.log")
@@ -13,5 +14,5 @@ helpers do
 end
 
 get '/' do
-  "Coming soon..."
+  haml :home
 end

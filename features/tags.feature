@@ -3,6 +3,12 @@ Feature: Tumblelogs can look up their most-used tags
   A Tumblelog
   Can look up its most-used tags
 
-Scenario: Home page
+Scenario: get tags
   Given I am on the home page
-   Then I should see "Coming soon..."
+   When I fill in "Tumblr user" with "erikostrom"
+    And I press "Tag Me"
+   Then I should be on the tag page for "erikostrom"
+    And I should see these tags:
+      | politics    | 8 |
+      | minneapolis | 6 |
+      | city life   | 5 |
