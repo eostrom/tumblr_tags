@@ -1,11 +1,12 @@
-app_file = File.join(File.dirname(__FILE__), *%w[.. .. tumblrtags.rb])
+app_file = File.join(File.dirname(__FILE__), *%w[.. .. tumblr_tags.rb])
 require app_file
 # Force the application name because polyglot breaks the auto-detection logic.
 Sinatra::Application.app_file = app_file
 
-require 'spec/expectations'
 require 'test/unit'
 require 'rack/test'
+require 'cucumber/web/tableish'
+
 require 'webrat'
 
 Webrat.configure do |config|

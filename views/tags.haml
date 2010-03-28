@@ -1,0 +1,7 @@
+%ul#tumblr_tags
+  - @tags.descend_by_count do |tag|
+    %li
+      %span.tag= tag.name
+      (
+      %span.count>= tag.count
+      )

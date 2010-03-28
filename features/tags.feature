@@ -5,9 +5,9 @@ Feature: Tumblelogs can look up their most-used tags
 
 Scenario: get tags
   Given I am on the home page
-   When I fill in "Tumblr user" with "erikostrom"
+   When I fill in "Tumblelog name" with "erikostrom"
     And I press "Tag Me"
-   Then I should be on the tag page for "erikostrom"
+   Then I should be on the tags page for "erikostrom"
     And I should see these tags:
       | politics    | 8 |
       | minneapolis | 6 |

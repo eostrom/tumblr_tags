@@ -1,0 +1,9 @@
+# -*- ruby -*-
+
+Autotest.add_hook :initialize do |at|
+  app = 'tumblr_tags.rb'
+  test = 'test/test_tumblr_tags.rb'
+
+  at.add_mapping(/^views\/.*/) { |f, m| test }
+  at.add_mapping(/^[^\/]*\.rb$/) { |f, m| test }
+end
