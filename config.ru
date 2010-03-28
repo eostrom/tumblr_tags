@@ -5,7 +5,7 @@ require 'sinatra'
 set :env,  :production
 disable :run
 
-require 'tumblrtags'
+require 'tumblr_tags'
 
 FileUtils.mkdir_p 'log' unless File.exists?('log')
 log = File.new("log/sinatra.log", "a")
