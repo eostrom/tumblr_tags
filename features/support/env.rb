@@ -13,6 +13,11 @@ Webrat.configure do |config|
   config.mode = :rack
 end
 
+# Don't generate fancy HTML for stack traces.
+disable :show_exceptions
+# Allow errors to get out of the app so Cucumber can display them.
+enable :raise_errors
+
 module Webrat
   module Logging
     def logger
