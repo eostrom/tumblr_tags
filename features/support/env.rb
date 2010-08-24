@@ -5,7 +5,6 @@ Sinatra::Application.app_file = app_file
 
 require 'test/unit'
 require 'rack/test'
-require 'cucumber/web/tableish'
 
 require 'webrat'
 

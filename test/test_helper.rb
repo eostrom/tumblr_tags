@@ -1,6 +1,8 @@
-require 'test/unit'
-require 'context'
-require 'rr'
+require 'rubygems'
+require 'bundler'
+Bundler.require(:default, :test)
+
+require 'tu-context'
 
 class Test::Unit::TestCase
   include RR::Adapters::TestUnit

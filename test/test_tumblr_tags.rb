@@ -1,7 +1,5 @@
 require File.join(File.dirname(__FILE__), 'test_helper.rb')
 require 'rack/test'
-require 'nokogiri'
-require 'webrat/core/matchers'
 
 class TestTumblrTags < Test::Unit::TestCase
   include Rack::Test::Methods

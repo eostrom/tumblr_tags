@@ -1,12 +1,17 @@
 require 'rubygems'
+require 'bundler'
+Bundler.setup
+
 require 'sinatra'
-require 'logger'
+# require 'logger'
 require 'haml'
 require 'mongo_mapper'
 
 require 'lib/blog'
 require 'lib/tag'
 require 'lib/tag_collection'
+
+set :root, File.dirname(__FILE__)
 
 configure do
   LOGGER = Logger.new("log/sinatra.log")
