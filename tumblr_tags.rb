@@ -1,15 +1,13 @@
 require 'rubygems'
-require 'bundler'
-Bundler.setup
+require 'bundler/setup'
 
 require 'sinatra'
 # require 'logger'
 require 'haml'
 require 'mongo_mapper'
 
-require 'lib/blog'
-require 'lib/tag'
-require 'lib/tag_collection'
+require 'require_all'
+require_rel 'lib'
 
 set :root, File.dirname(__FILE__)
 
