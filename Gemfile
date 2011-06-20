@@ -13,7 +13,6 @@ gem 'mongo_mapper'
 
 group :test do
   gem 'rack-test'
-  gem 'tu-context'
   gem 'rr'
   gem 'webrat'
   gem 'cucumber'

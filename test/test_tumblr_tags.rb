@@ -1,17 +1,17 @@
 require File.join(File.dirname(__FILE__), 'test_helper.rb')
 require 'rack/test'
 
-class TestTumblrTags < Test::Unit::TestCase
+describe 'TumblrTags' do
   include Rack::Test::Methods
   include Webrat::Matchers
 
   def app; Sinatra::Application; end
   def response_body; last_response.body; end
 
-  describe 'TumblrTags' do
     describe '/tags' do
-      setup do
-        mock(Blog).find_or_initialize_by_name('erikostrom').mock!.tags do
+      before do
+        @blog = mock(Blog).find_or_initialize_by_name('erikostrom').mock!
+        @blog.tags do
           TagCollection.new [
             Tag.new(:name => 'few', :count => 3),
             Tag.new(:name => 'many things', :count => 15)
@@ -35,6 +35,5 @@ class TestTumblrTags < Test::Unit::TestCase
       end
     end
   end
-end
 
 

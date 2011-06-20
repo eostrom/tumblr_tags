@@ -2,9 +2,9 @@ require 'rubygems'
 require 'bundler'
 Bundler.require(:default, :test)
 
-require 'tu-context'
+require 'minitest/autorun'
 
-class Test::Unit::TestCase
+class MiniTest::Unit::TestCase
   include RR::Adapters::TestUnit
 end
 
