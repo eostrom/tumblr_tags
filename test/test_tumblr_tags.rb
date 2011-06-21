@@ -11,12 +11,12 @@ describe 'TumblrTags' do
   describe '/tags' do
     before do
       @blog = mock(Blog).find_or_initialize_by_name('erikostrom').mock!
-      @blog.tags do
-        TagCollection.new [
-          Tag.new(:name => 'few', :count => 3),
-          Tag.new(:name => 'many things', :count => 15)
-        ]
-      end
+      @blog.tags { TagCollection.new({'few' => 3, 'many things' => 15}) }
+      
+      # These aren't real URLs, but we don't need them to be; we
+      # just need something we can test for in the output.
+      @blog.tag_url('many things') { 'TAG_URL(many things)' }
+      @blog.tag_url('few') { 'TAG_URL(few)' }
 
       get '/tags', :blog => 'erikostrom'
     end
@@ -26,8 +26,8 @@ describe 'TumblrTags' do
 
       assert_have_selector 'ul#tumblr_tags'
       assert_have_selector 'ul#tumblr_tags li', :count => 2
-      #         assert_have_selector('ul#tumblr_tags li:first-child a',
-      #           :href => 'http://erikostrom.tumblr.com/tagged/many%20things')
+      assert_have_selector('ul#tumblr_tags li:first-child a',
+        :href => 'TAG_URL(many things)')
       assert_have_selector('ul#tumblr_tags li:first-child .tag',
         :content => 'many things')
       assert_have_selector('ul#tumblr_tags li:first-child .count',

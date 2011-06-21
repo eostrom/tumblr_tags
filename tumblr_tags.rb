@@ -27,7 +27,7 @@ get '/' do
 end
 
 get '/tags' do
-  @tags = Blog.find_or_initialize_by_name(params[:blog]).tags || 1
-
+  @blog = Blog.find_or_initialize_by_name(params[:blog])
+  
   haml :tags
 end

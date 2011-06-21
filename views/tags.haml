@@ -1,7 +1,7 @@
 %ul#tumblr_tags
-  - @tags.descend_by_count do |tag|
+  - @blog.tags.descend_by_count do |name, count|
     %li
-      %span.tag= tag.name
+      %a.tag{:href => @blog.tag_url(name)}= name
       (
-      %span.count>= tag.count
+      %span.count>= count
       )

@@ -9,3 +9,7 @@ end
 Then /^\{(.*)\}$/ do |ruby|
   eval ruby
 end
+
+Then /^debug$/ do
+  debugger
+end
