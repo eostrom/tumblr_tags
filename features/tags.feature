@@ -17,3 +17,10 @@ Scenario: get tags
       | food        |  6 |
       | minnesota   |  6 |
       | biking      |  5 |
+
+@tumblr_movingtompls
+Scenario: tags are cached
+   When I get 6 tags for "movingtompls"
+    And I get 8 tags for "movingtompls"
+   Then I should see 8 tags
+    And posts should have been retrieved once

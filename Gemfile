@@ -21,6 +21,7 @@ group :test do
   gem 'webrat'
   gem 'cucumber'
   gem 'cucumber-rails'
+  gem 'database_cleaner'
   gem 'launchy'
   gem 'autotest'
   gem 'autotest-fsevent'

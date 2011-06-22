@@ -5,13 +5,18 @@ class Blog
 
   key :name, String, :required => true
   key :tags, TagCollection, :required => true
-
-  def tags
-    super || retrieve_tags!
-  end
-
+  
   def tag_url(tag)
     "http://#{name}.tumblr.com/tagged/#{URI.escape(tag)}"
+  end
+  
+  # Fetches tags from Tumblr and saves them, unless we've already
+  # done it.
+  def update_tags!
+    return if tags
+      
+    retrieve_tags!
+    save!
   end
   
   private

@@ -5,18 +5,30 @@ describe 'Blog' do
     @blog = Blog.new(:name => 'erikostrom')
   end
   
-  describe 'tags' do
+  describe 'update_tags!' do
     before do
-      new_instance_of(Tumblr::Reader) do |r|
-        @post = Object.new
-        stub(@post).tags { 'hello,some stuff' }
-        stub(r).each_post('erikostrom').yields(@post) {1}
+      post = Tumblr::Post.new
+      stub(post).tags { 'hello,some stuff' }
+      
+      any_instance_of(Tumblr::Reader) do |r|
+        stub(r).each_post('erikostrom').yields(post) {1}
       end
     end
-    
-    it 'returns a TagCollection' do
+
+    it 'retrieves tags and saves the record' do
+      @blog.update_tags!
+      
       assert TagCollection === @blog.tags
       assert_equal 2, @blog.tags.size
+      assert !@blog.new_record?
+    end
+
+    it 'only retrieves tags once' do
+      @blog.update_tags!
+
+      blog = Blog.find_by_name(@blog.name)
+      mock(blog).save.with_any_args.times(0)
+      blog.update_tags!
     end
   end
 

@@ -16,6 +16,7 @@ describe 'TumblrTags' do
       # isolation of the app/view, but it's too much of a pain to mock
       # multiple yields from descend_by_count.
       @blog.tags { TagCollection.new({'few' => 3, 'many things' => 15}) }
+      @blog.update_tags! # don't need to fake a value here
       
       # These aren't real URLs, but we don't need them to be; we
       # just need something we can test for in the output.
