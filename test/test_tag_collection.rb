@@ -25,5 +25,13 @@ describe 'TagCollection' do
         assert_equal counts.shift, count
       end
     end
+
+    it 'takes a limit option' do
+      counts = [15]
+
+      @tag_collection.descend_by_count(:limit => 1) do |name, count|
+        assert_equal counts.shift, count
+      end
+    end
   end
 end

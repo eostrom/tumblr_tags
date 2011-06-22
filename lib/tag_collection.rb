@@ -22,7 +22,9 @@ class TagCollection
   #   value.is_a?(self) ? value : self.new(value)
   # end
   
-  def descend_by_count(&block)
-    tags.to_a.sort_by {|name, count| count}.reverse.each(&block)
+  def descend_by_count(options = {}, &block)
+    tags.to_a.sort_by {|name, count| count}
+      .reverse[0..(options[:limit] || 0) - 1]
+      .each(&block)
   end
 end

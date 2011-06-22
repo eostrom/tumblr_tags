@@ -7,6 +7,7 @@ Feature: Tumblelogs can look up their most-used tags
 Scenario: get tags
   Given I am on the home page
    When I fill in "Tumblelog name" with "movingtompls"
+    And I fill in "Limit" with "6"
     And I press "Tag Me"
    Then I should be on the tags page for "movingtompls"
     And I should see these tags:

@@ -28,6 +28,7 @@ end
 
 get '/tags' do
   @blog = Blog.find_or_initialize_by_name(params[:blog])
+  @limit = params[:limit].try(:to_i)
   
   haml :tags
 end

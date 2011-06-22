@@ -1,5 +1,5 @@
 %ul#tumblr_tags
-  - @blog.tags.descend_by_count do |name, count|
+  - @blog.tags.descend_by_count(:limit => @limit) do |name, count|
     %li
       %a.tag{:href => @blog.tag_url(name)}= name
       (
