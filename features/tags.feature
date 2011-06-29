@@ -24,3 +24,8 @@ Scenario: tags are cached
     And I get 8 tags for "movingtompls"
    Then I should see 8 tags
     And posts should have been retrieved once
+
+   When 2 days go by
+    And I get 4 tags for "movingtompls"
+   Then I should see 4 tags
+    And posts should have been retrieved twice

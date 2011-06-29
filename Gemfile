@@ -14,6 +14,7 @@ gem 'mongo_mapper'
 gem 'tumblr-rb', :git => 'git://github.com/eostrom/tumblr.git', :require => 'tumblr'
 
 group :test do
+  gem 'timecop'
   gem 'fakeweb'
   gem 'vcr'
   gem 'rack-test'

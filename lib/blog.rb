@@ -5,6 +5,7 @@ class Blog
 
   key :name, String, :required => true
   key :tags, TagCollection, :required => true
+  timestamps!
   
   def tag_url(tag)
     "http://#{name}.tumblr.com/tagged/#{URI.escape(tag)}"
@@ -13,7 +14,7 @@ class Blog
   # Fetches tags from Tumblr and saves them, unless we've already
   # done it.
   def update_tags!
-    return if tags
+    return if updated_at && (updated_at > 1.day.ago)
       
     retrieve_tags!
     save!
